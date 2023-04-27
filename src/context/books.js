@@ -1,4 +1,4 @@
-import { createContext,useState } from "react";
+import { createContext,useState,useCallback } from "react";
 import axios from "axios";
 
 const BooksContext = createContext();
@@ -9,10 +9,10 @@ function Provider({children}){
   const [book, setBook] = useState([]);
 
   // Fatches all the Books
- const fetchBooks = async() =>{
+ const fetchBooks = useCallback(async() =>{
    const response = await axios.get('http://localhost:3012/book');
    setBook(response.data);
- }
+ },[])
 
 
 
@@ -27,7 +27,6 @@ function Provider({children}){
  // Edit the Book
  const editBookById=async (id, newTitle)=>{
    const response = await axios.put(`http://localhost:3012/book/${id}`,{id,title:newTitle});
-   console.log(response);
    const updatedBooks = book.map((eachBook)=>{
      if(eachBook.id === id){
        return {...eachBook,...response.data};

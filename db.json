@@ -2,15 +2,15 @@
   "book": [
     {
       "id": 1,
-      "title": "Lord of the Ringss"
+      "title": "Lord of the Rings"
     },
     {
-      "title": "harry Potter",
+      "title": "Harry Potter",
       "id": 2
     },
     {
       "id": 3,
-      "title": "spiderman"
+      "title": "Spiderman"
     }
   ]
 }
