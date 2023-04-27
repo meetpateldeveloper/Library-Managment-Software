@@ -1,12 +1,18 @@
 import BookShow from "./BookShow";
+import useBooksContext from '../hooks/use-books-context';
 
-function BookList({ bookArray, deleteBook,editBook }) {
-    
-  const bookNames = bookArray.map((eachBook) => (
-    <BookShow book={eachBook} deleteBook={deleteBook} editBook={editBook} />
+
+function BookList() {
+  const {book} = useBooksContext();
+  const bookNames = book.map((eachBook) => (
+    <BookShow book={eachBook} key={eachBook.id} />
   ));
 
-  return <div className="bookList">{bookNames}</div>;
+  return (
+    <div className="book-list">
+      {bookNames}
+    </div>
+  );
 }
 
 export default BookList;
